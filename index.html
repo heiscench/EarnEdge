@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EarnEdge - Your Edge to Real Earnings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', system-ui; }
+        .hero-bg { background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%); }
+    </style>
+</head>
+<body class="bg-zinc-950 text-white">
+    <!-- Navbar -->
+    <nav class="bg-black/80 backdrop-blur-md sticky top-0 z-50 border-b border-zinc-800">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-blue-400">EarnEdge</div>
+            <div class="space-x-8 text-sm">
+                <a href="#markets" class="hover:text-blue-400">Markets</a>
+                <a href="#predictions" class="hover:text-blue-400">Predictions</a>
+                <a href="#guides" class="hover:text-blue-400">Earn Guides</a>
+                <a href="#" class="bg-blue-600 hover:bg-blue-500 px-5 py-2 rounded-full text-sm">Get Started Free</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero-bg py-24 text-center">
+        <div class="max-w-4xl mx-auto px-6">
+            <h1 class="text-5xl font-bold mb-6">Get Your Edge to Earn More</h1>
+            <p class="text-xl text-zinc-300 mb-10">Smart predictions and insights for memecoins, forex trades, NFTs, crypto staking & more. Built for people ready to make real money moves.</p>
+            <div class="flex gap-4 justify-center">
+                <a href="#predictions" class="bg-white text-black px-8 py-4 rounded-2xl font-semibold hover:bg-zinc-200">Ask for Free Insight</a>
+                <a href="#markets" class="border border-white/50 px-8 py-4 rounded-2xl hover:bg-white/10">Live Opportunities</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Markets -->
+    <section id="markets" class="py-20 bg-zinc-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-8 text-center">Live Earning Opportunities</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Memecoins -->
+                <div class="bg-zinc-800 rounded-3xl p-6">
+                    <h3 class="font-semibold mb-4 flex items-center gap-2"><i class="fa-solid fa-fire text-orange-500"></i> Hot Memecoins</h3>
+                    <div id="memecoins" class="space-y-4 text-sm"></div>
+                </div>
+                <!-- NFTs / Crypto -->
+                <div class="bg-zinc-800 rounded-3xl p-6">
+                    <h3 class="font-semibold mb-4 flex items-center gap-2"><i class="fa-solid fa-gem text-purple-500"></i> Trending Assets</h3>
+                    <div id="assets" class="space-y-4 text-sm"></div>
+                </div>
+                <!-- Forex -->
+                <div class="bg-zinc-800 rounded-3xl p-6">
+                    <h3 class="font-semibold mb-4 flex items-center gap-2"><i class="fa-solid fa-chart-line text-green-500"></i> Forex Signals</h3>
+                    <p class="text-zinc-400 text-sm">EUR/USD: Potential breakout • Watch 1.10 resistance<br>USD/JPY: Bearish bias • Target 145</p>
+                    <p class="text-xs text-zinc-500 mt-4">Live via public feeds – always DYOR</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Predictions -->
+    <section id="predictions" class="py-20">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-4">Get Personalized Predictions</h2>
+            <p class="text-zinc-400 mb-8">Ask anything: "Best memecoin setup right now?" "Forex pair to watch this week?" "Safe NFT flip ideas?"</p>
+            <!-- AI placeholder – we'll replace this soon -->
+            <div class="bg-zinc-800 rounded-3xl p-8 min-h-[400px] flex items-center justify-center border border-dashed border-zinc-700">
+                <p class="text-zinc-500">AI Insight Engine – Adding embed next (Phase 2)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guides -->
+    <section id="guides" class="py-20 bg-zinc-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center">Free Guides to Start Earning</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-zinc-800 p-8 rounded-3xl">
+                    <h3 class="font-bold text-xl mb-2">Memecoin Flipping 101 (2026 Edition)</h3>
+                    <p class="text-zinc-400">Spot pumps, manage risks, exit strategies.</p>
+                </div>
+                <div class="bg-zinc-800 p-8 rounded-3xl">
+                    <h3 class="font-bold text-xl mb-2">Forex Basics for Beginners</h3>
+                    <p class="text-zinc-400">Pairs, signals, simple setups that pay.</p>
+                </div>
+                <div class="bg-zinc-800 p-8 rounded-3xl">
+                    <h3 class="font-bold text-xl mb-2">Staking & Passive Crypto Income</h3>
+                    <p class="text-zinc-400">Low-risk ways to earn while you sleep.</p>
+                </div>
+                <div class="bg-zinc-800 p-8 rounded-3xl">
+                    <h3 class="font-bold text-xl mb-2">NFT Utility Plays That Actually Earn</h3>
+                    <p class="text-zinc-400">Beyond art – gaming, RWAs, yields.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black py-12 text-center text-zinc-500 text-sm">
+        EarnEdge © 2026 • Educational tool only • Not financial advice – always do your own research (DYOR)
+    </footer>
+
+    <script>
+        // Fetch live memecoins (CoinGecko free API – top by volume)
+        async function loadMarkets() {
+            try {
+                const res = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=volume_desc&per_page=5&page=1&sparkline=false');
+                const data = await res.json();
+                const container = document.getElementById('memecoins');
+                data.forEach(coin => {
+                    const div = document.createElement('div');
+                    div.className = 'flex justify-between items-center';
+                    div.innerHTML = `
+                        <span>${coin.name} (${coin.symbol.toUpperCase()})</span>
+                        <span class="${coin.price_change_percentage_24h > 0 ? 'text-green-400' : 'text-red-400'}">
+                            $${coin.current_price.toLocaleString()} (${coin.price_change_percentage_24h.toFixed(1)}%)
+                        </span>
+                    `;
+                    container.appendChild(div);
+                });
+
+                // Placeholder for assets (we'll expand to NFTs or more crypto later)
+                document.getElementById('assets').innerHTML = '<p class="text-zinc-400">Loading trending assets...</p>';
+            } catch(e) {
+                console.log(e);
+                document.getElementById('memecoins').innerHTML = '<p class="text-zinc-400">Live data loading... (API may be rate-limited)</p>';
+            }
+        }
+        loadMarkets();
+    </script>
+</body>
+</html>
