@@ -151,10 +151,35 @@
             document.getElementById('assets').innerHTML = '<p class="text-zinc-400">Live data loading...</p>';
         }
     }
-    loadMarkets();
+    loadMarkets(<!-- Trending NFTs Card -->
+<div class="bg-zinc-800 rounded-3xl p-6">
+    <h3 class="font-semibold mb-4 flex items-center gap-2">
+        <i class="fa-solid fa-gem text-purple-500"></i> Trending NFTs
+    </h3>
+    <div id="nfts" class="space-y-2 text-sm">
+        <!-- Data will load here -->
+    </div>
+</div>);
 
-    // Optional: Auto-refresh every 60 seconds
+    // Optional: Auto-refresh every 20 seconds
     setInterval(loadMarkets, 60000);
+// ... (your existing memecoins and gainers code)
+
+// 3. Trending NFTs (top searched NFTs)
+const trendingRes = await fetch('https://api.coingecko.com/api/v3/search/trending');
+const trendingData = await trendingRes.json();
+const nfts = trendingData.nfts.slice(0, 5); // Top 5 trending NFTs
+const nftContainer = document.getElementById('nfts');
+nftContainer.innerHTML = ''; // Clear any placeholder
+nfts.forEach(nft => {
+    const div = document.createElement('div');
+    div.className = 'flex justify-between items-center py-2 border-b border-zinc-700 last:border-0';
+    div.innerHTML = `
+        <span class="font-medium">${nft.name}</span>
+        <span class="text-purple-400">Floor: ${nft.floor_price_in_native_currency?.toFixed(2) || 'N/A'} ${nft.native_currency_symbol || '?'}</span>
+    `;
+    nftContainer.appendChild(div);
+});
 </script>
 
 </body>
