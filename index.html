@@ -107,32 +107,55 @@
     </footer>
 
     <script>
-        // Fetch live memecoins (CoinGecko free API – top by volume)
-        async function loadMarkets() {
-            try {
-                const res = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=volume_desc&per_page=5&page=1&sparkline=false');
-                const data = await res.json();
-                const container = document.getElementById('memecoins');
-                data.forEach(coin => {
-                    const div = document.createElement('div');
-                    div.className = 'flex justify-between items-center';
-                    div.innerHTML = `
-                        <span>${coin.name} (${coin.symbol.toUpperCase()})</span>
-                        <span class="${coin.price_change_percentage_24h > 0 ? 'text-green-400' : 'text-red-400'}">
-                            $${coin.current_price.toLocaleString()} (${coin.price_change_percentage_24h.toFixed(1)}%)
-                        </span>
-                    `;
-                    container.appendChild(div);
-                });
+    // Load multiple live data sources
+    async function loadMarkets() {
+        try {
+            // 1. Hot Memecoins / Top Volume (existing, keep it)
+            const volumeRes = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=volume_desc&per_page=5&page=1&sparkline=false&locale=en');
+            const volumeData = await volumeRes.json();
+            const memecoinsContainer = document.getElementById('memecoins');
+            memecoinsContainer.innerHTML = ''; // Clear placeholder
+            volumeData.forEach(coin => {
+                const div = document.createElement('div');
+                div.className = 'flex justify-between items-center py-2 border-b border-zinc-700 last:border-0';
+                div.innerHTML = `
+                    <span class="font-medium">${coin.name} (${coin.symbol.toUpperCase()})</span>
+                    <span class="${coin.price_change_percentage_24h > 0 ? 'text-green-400' : 'text-red-400'}">
+                        $${coin.current_price.toLocaleString()} (${coin.price_change_percentage_24h?.toFixed(1)}%)
+                    </span>
+                `;
+                memecoinsContainer.appendChild(div);
+            });
 
-                // Placeholder for assets (we'll expand to NFTs or more crypto later)
-                document.getElementById('assets').innerHTML = '<p class="text-zinc-400">Loading trending assets...</p>';
-            } catch(e) {
-                console.log(e);
-                document.getElementById('memecoins').innerHTML = '<p class="text-zinc-400">Live data loading... (API may be rate-limited)</p>';
-            }
+            // 2. Top Gainers (for Trending Assets card - replace placeholder)
+            const gainersRes = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=percent_change_24h_desc&per_page=5&page=1&sparkline=false&locale=en');
+            const gainersData = await gainersRes.json();
+            const assetsContainer = document.getElementById('assets');
+            assetsContainer.innerHTML = ''; // Clear loading
+            gainersData.forEach(coin => {
+                const div = document.createElement('div');
+                div.className = 'flex justify-between items-center py-2 border-b border-zinc-700 last:border-0';
+                div.innerHTML = `
+                    <span class="font-medium">${coin.name} (${coin.symbol.toUpperCase()})</span>
+                    <span class="text-green-400">+${coin.price_change_percentage_24h?.toFixed(1)}%</span>
+                `;
+                assetsContainer.appendChild(div);
+            });
+
+            // 3. Trending NFTs (new card or replace one if you want - add to HTML first)
+            // First, update HTML to have a new div if needed (see below)
+
+        } catch (e) {
+            console.error(e);
+            document.getElementById('memecoins').innerHTML = '<p class="text-zinc-400">Live data loading... (API may be rate-limited, refresh)</p>';
+            document.getElementById('assets').innerHTML = '<p class="text-zinc-400">Live data loading...</p>';
         }
-        loadMarkets();
-    </script>
+    }
+    loadMarkets();
+
+    // Optional: Auto-refresh every 60 seconds
+    setInterval(loadMarkets, 60000);
+</script>
+
 </body>
 </html>
